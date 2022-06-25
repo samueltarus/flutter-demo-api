@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -21,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public void listProducts() {
-        productService.listProducts();
+    public List<Product> listProducts() {
+       return productService.listProducts();
     }
 }

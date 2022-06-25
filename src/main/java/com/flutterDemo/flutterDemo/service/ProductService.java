@@ -1,5 +1,9 @@
 package com.flutterDemo.flutterDemo.service;
 
+import com.flutterDemo.flutterDemo.model.Product;
+
+import java.util.List;
+
 public interface ProductService {
-    void listProducts();
+    List<Product> listProducts();
 }
