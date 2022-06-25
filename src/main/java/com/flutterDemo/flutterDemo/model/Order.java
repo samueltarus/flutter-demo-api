@@ -15,6 +15,7 @@ public class Order {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Product product;
     private double total;
     private int quantity;
