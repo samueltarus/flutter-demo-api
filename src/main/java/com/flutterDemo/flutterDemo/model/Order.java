@@ -20,5 +20,8 @@ public class Order {
     private double total;
     private int quantity;
     private int vat;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }

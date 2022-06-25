@@ -18,5 +18,6 @@ public class Category {
     private String name;
     @OneToMany(mappedBy = "category")
     private List<Product> products;
+    private String thumbnail;
 
 }

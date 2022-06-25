@@ -19,11 +19,14 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name="cart_id", nullable=false)
+    private Cart cart;
     private double price;
     private double discount;
     private String shortDescription;
     private String longDescription;
     private int quantity;
-    private String productImage;
+    private String thumbnail;
 
 }
