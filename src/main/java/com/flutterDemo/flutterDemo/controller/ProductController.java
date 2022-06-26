@@ -2,28 +2,24 @@ package com.flutterDemo.flutterDemo.controller;
 
 
 import com.flutterDemo.flutterDemo.model.Product;
-import com.flutterDemo.flutterDemo.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-public class ProductController {
-
-    @Autowired
-    private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
+public interface ProductController {
     @GetMapping("/list")
-    public List<Product> listProducts() {
-       return productService.listProducts();
-    }
+    public  Response listProducts() ;
+
+    @PutMapping("/{id}")
+    public Response
+    updateProduct(@RequestBody Product product,
+                  @PathVariable("id") Long productId);
+
+    // Delete operation
+    @DeleteMapping("/{id}")
+    public  Response deleteProductById(@PathVariable("id")
+                                    Long productId);
 }
