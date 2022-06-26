@@ -1,30 +1,28 @@
 package com.flutterDemo.flutterDemo.controller;
 
 import com.flutterDemo.flutterDemo.model.Category;
-import com.flutterDemo.flutterDemo.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/categories")
-public class CategoryController {
-
-    @Autowired
-    private final CategoryService categoryService;
-
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+public interface CategoryController {
 
     @PostMapping("/save")
-    public Category saveCategory(@RequestBody Category category){
-        return categoryService.saveCategory(category);
-    }
+    public Response saveCategory(@RequestBody Category category);
 
     @GetMapping("/list")
-    public List<Category> listCategories() {
-       return categoryService.listCategories();
-    }
+    public Response  listCategories();
+    @PutMapping("/{id}")
+
+    public Response updateCategory(@RequestBody Category category,
+                   @PathVariable("id") Long categoryId);
+
+    // Delete operation
+    @DeleteMapping("/{id}")
+    public  Response  deleteCategoryById(@PathVariable("id")
+                                     Long category);
 }

@@ -9,4 +9,12 @@ public interface OrderService {
     List<Order> listOrders();
 
     Order placeOrder(Order order);
+
+
+    Order updateOrder(Order order,
+                          Long orderId);
+
+    // Delete operation
+    void deleteOrderById(Long orderId);
+
 }
