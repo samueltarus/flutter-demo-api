@@ -2,10 +2,9 @@ package com.flutterDemo.flutterDemo.controller.impl;
 
 
 import com.flutterDemo.flutterDemo.model.Product;
-import com.flutterDemo.flutterDemo.service.ProductService;
+import com.flutterDemo.flutterDemo.service.impl.ProductServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,7 @@ import java.util.List;
 @Log
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductServiceImplementation productService;
 
     @GetMapping("/list")
     public List<Product> listProducts() {
