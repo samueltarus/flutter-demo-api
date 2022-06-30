@@ -1,24 +1,45 @@
 package com.flutterDemo.flutterDemo.controller;
 
+
 import com.flutterDemo.flutterDemo.model.Customer;
+import com.flutterDemo.flutterDemo.service.CustomerService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.core.Response;
-
-
 @RestController
-@RequestMapping("/api/orders")
-public interface CustomerController {
+@RequestMapping("/api/customers")
+@RequiredArgsConstructor
+@Log
+public class CustomerController  {
 
-    @PostMapping("/add")
-    public Response addCustomer(@RequestBody Customer customer);
+    @Autowired
+    private final CustomerService customerService;
+
+
+    public Customer addCustomer(@RequestBody Customer customer){
+
+        return customerService.addCustomer(customer);
+    }
     @PutMapping("/{id}")
-    public  Response
+    public  Customer
     updateCustomer(@RequestBody Customer customer,
-                   @PathVariable("id") Long customerId);
+                   @PathVariable("id") Long customerId)
+    {
 
-    // Delete operation
+        return  customerService.updateCustomer(
+                customer, customerId);
+    }
     @DeleteMapping("/{id}")
-    public  Response deleteCustomerById(@PathVariable("id")
-                                     Long customerId);
+    // Delete operation
+    public  Customer deleteCustomerById(@PathVariable("id")
+                                     Long customerId)
+    {
+        customerService.deleteCustomerById(
+                customerId);
+
+        return  null;
+    }
+
 }

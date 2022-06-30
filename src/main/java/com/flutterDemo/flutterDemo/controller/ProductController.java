@@ -1,13 +1,11 @@
-package com.flutterDemo.flutterDemo.controller.impl;
+package com.flutterDemo.flutterDemo.controller;
 
 
 import com.flutterDemo.flutterDemo.model.Product;
 import com.flutterDemo.flutterDemo.service.impl.ProductServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,29 +23,23 @@ public class ProductController {
         return productService.listProducts();
     }
 
-/*
-    public Response
+
+    @PutMapping("/{id}")
+    public Product
     updateProduct(@RequestBody Product product,
                   @PathVariable("id") Long productId) {
-        productService.updateProduct(
+        return   productService.updateProduct(
                 product, productId);
-        return buildResponse(
-                true,
-                "Updated Successfully",
-                null
-        );
+
     }
 
     // Delete operation
-    public Response deleteProductById(@PathVariable("id")
+    @DeleteMapping("/{id}")
+    public Product deleteProductById(@PathVariable("id")
                                       Long productId) {
-        productService.deleteProductById(
+          productService.deleteProductById(
                 productId);
 
-        return buildResponse(
-                true,
-                "Deleted Successfully",
-                null
-        );
-    }*/
+        return null;
+    }
 }
